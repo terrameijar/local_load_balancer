@@ -6,6 +6,9 @@ The tool manages docker containers by monitoring their CPU load and RAM usage. W
 
 I wrote this as a proof of concept of autoscaling dockerised web applications. The code isn't perfect so use it at your own risk.
 
+
+![Autoscaling screencast](autoscaling.gif)
+
 ## Contents
 
 - `backend/` - This folder contains code to run a simple Flask application with routes to test CPU, RAM and basic connectivity.
