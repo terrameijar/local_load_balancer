@@ -94,7 +94,7 @@ def terminate_container():
     if len(containers) > 0:
         print(f"Stopping {containers[-1].name}")
 
-        # TODO: When server is removed from rotation, update NGINX config
+        # TODO: When server is removed from rotation, update NGINX
         # nginx_container = client.containers.get("nginx-lb")
         container = client.containers.get(containers[-1].name)
         container.stop()
@@ -140,15 +140,12 @@ def manage_containers_by_cpu_usage():
         print("CPU load has been low for more than 5mins, removing container")
         terminate_container()
         cooldown_time_end = current_time + 30
-        # reload nginx container
-        nginx_container = client.containers.get("nginx-lb")
-        nginx_container.restart()
 
 
 def main():
+    print("Running autoscaling script")
     while True:
         manage_containers_by_cpu_usage()
-        print("Nothing to do, sleeping for 10 seconds")
         time.sleep(10)
 
 
